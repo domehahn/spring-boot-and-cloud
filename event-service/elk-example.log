@@ -1,0 +1,9 @@
+2023-02-16T14:48:09.659+01:00  INFO 75328 --- [catalogWatchTaskScheduler-1] o.apache.http.impl.execchain.RetryExec   : I/O exception (java.net.SocketException) caught when processing request to {}->http://0.0.0.0:8500: Operation timed out
+2023-02-16T14:48:09.669+01:00  INFO 75328 --- [catalogWatchTaskScheduler-1] o.apache.http.impl.execchain.RetryExec   : Retrying request to {}->http://0.0.0.0:8500
+2023-02-16T14:49:03.378+01:00  INFO 75328 --- [catalogWatchTaskScheduler-1] o.apache.http.impl.execchain.RetryExec   : I/O exception (java.net.SocketException) caught when processing request to {}->http://0.0.0.0:8500: Operation timed out
+2023-02-16T14:49:03.379+01:00  INFO 75328 --- [catalogWatchTaskScheduler-1] o.apache.http.impl.execchain.RetryExec   : Retrying request to {}->http://0.0.0.0:8500
+2023-02-16T14:51:35.802+01:00  INFO 75328 --- [SpringContextShutdownHook] o.s.c.c.b.ConsulInboundMessageProducer   : stopped org.springframework.cloud.consul.binder.ConsulInboundMessageProducer@5263f554
+2023-02-16T14:51:35.826+01:00  INFO 75328 --- [SpringContextShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2023-02-16T14:51:35.826+01:00  INFO 75328 --- [SpringContextShutdownHook] o.s.i.channel.PublishSubscribeChannel    : Channel 'event-service-1.errorChannel' has 0 subscriber(s).
+2023-02-16T14:51:35.827+01:00  INFO 75328 --- [SpringContextShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : stopped bean '_org.springframework.integration.errorLogger'
+2023-02-16T14:51:35.831+01:00  INFO 75328 --- [SpringContextShutdownHook] o.s.c.c.s.ConsulServiceRegistry          : Deregistering service with consul: event-service-834820

@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    consul:
+      discovery:
+        instanceZone: zone1
+        register: false
+        registerHealthCheck: false
+        tags: zone=zone1
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: event-service
+          uri: lb://event-service
+          predicates:
+            - Path=/event/**
+          filters:
+            - RewritePath=/event/(?<path>.*), /$\{path}
+server:  
+  port: ${PORT:8080}

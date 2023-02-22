@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: backend-service
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      config:
+        format: YAML
+    vault:
+      token: hvs.ADJAprdSeo7ichRyFIW8Afr4
+      scheme: http
+      host: localhost
+      port: 8200
+      kv:
+        enabled: true
+      authentication: token
+    loadbalancer:
+      ribbon:
+        enabled: false
+  config:
+    import: vault://
