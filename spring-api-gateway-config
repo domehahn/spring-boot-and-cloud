@@ -17,5 +17,10 @@ spring:
             - Path=/event/**
           filters:
             - RewritePath=/event/(?<path>.*), /$\{path}
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter:
+                  replenishRate: 10
+                  burstCapacity: 20
 server:  
   port: ${PORT:8080}

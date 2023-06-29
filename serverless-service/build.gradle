@@ -26,9 +26,17 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-amqp'
     implementation 'org.springframework.cloud:spring-cloud-function-context'
+    implementation 'org.springframework.cloud:spring-cloud-config-client:4.0.1'
     implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap:4.0.1'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:4.0.1'
-    implementation 'org.springframework.cloud:spring-cloud-starter-stream-rabbit:4.0.1'
+
+    implementation(platform("io.micrometer:micrometer-tracing-bom:1.0.0"))
+    implementation("io.micrometer:micrometer-tracing")
+    implementation("io.micrometer:micrometer-tracing-bridge-otel")
+    implementation 'io.opentelemetry:opentelemetry-exporter-otlp-trace:1.14.0'
+    implementation("io.opentelemetry:opentelemetry-exporter-zipkin")
+
+    implementation 'net.logstash.logback:logstash-logback-encoder:7.2'
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

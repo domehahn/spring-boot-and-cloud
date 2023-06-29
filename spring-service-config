@@ -9,4 +9,5 @@ spring:
         health-check-critical-timeout: 3m
         instanceId: "${spring.application.name}:${random.int[1,999999]}"
         instanceZone: zone1      
-server.port: 0
+server:
+  port: 0
