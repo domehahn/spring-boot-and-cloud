@@ -1,26 +1,19 @@
-package eu.aboutdev.microservice;
+package eu.aboutdev.microservice.config.server.configserver;
 
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Metrics;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
 import org.springframework.context.annotation.Bean;
-import reactor.core.publisher.Mono;
 
 import java.util.Optional;
 
 @SpringBootApplication
-public class ApiGatewayApplication {
+public class ConfigServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ApiGatewayApplication.class, args);
-    }
-
-    @Bean
-    KeyResolver userKeyResolver() {
-        return exchange -> Mono.just("1");
+        SpringApplication.run(ConfigServerApplication.class, args);
     }
 
     @Bean

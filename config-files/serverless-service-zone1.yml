@@ -1,0 +1,33 @@
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: ${rabbitmq.username}
+    password: ${rabbitmq.password}
+    listener:
+      simple:
+        retry:
+          enabled: true
+          initial-interval: 2s
+          max-interval: 20s
+          max-attempts: 5
+          multiplier: 2
+rabbit:
+  backend:
+    queue: q.backend-queue
+  fail:
+    queue: q.fail-queue
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
+  otlp:
+   metrics:
+    export:
+     url: http://localhost:4318/v1/metrics
+     enabled: true

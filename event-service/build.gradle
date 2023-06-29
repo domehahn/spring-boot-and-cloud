@@ -5,7 +5,6 @@ plugins {
 }
 
 group = 'eu.aboutdev.microservice'
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
 configurations {
@@ -22,14 +21,19 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-amqp'
-    implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer:4.0.1'
-    implementation 'org.springframework.cloud:spring-cloud-starter-vault-config:4.0.0'
+    implementation 'org.springframework.cloud:spring-cloud-config-client:4.0.1'
     implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap:4.0.1'
     implementation 'org.springframework.cloud:spring-cloud-starter-consul-all:4.0.1'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:4.0.1'
-    implementation 'org.springframework.cloud:spring-cloud-starter-stream-rabbit:4.0.1'
 
     runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+
+    implementation(platform("io.micrometer:micrometer-tracing-bom:1.0.0"))
+    implementation 'io.micrometer:micrometer-tracing'
+    implementation 'io.micrometer:micrometer-tracing-bridge-otel'
+    implementation 'io.opentelemetry:opentelemetry-exporter-otlp-trace:1.14.0'
+    implementation 'io.github.openfeign:feign-micrometer:12.2'
+    //implementation("io.opentelemetry:opentelemetry-exporter-zipkin")
 
     implementation 'net.logstash.logback:logstash-logback-encoder:7.2'
 
@@ -38,6 +42,13 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
+tasks.register('copyFileFromBuildFolder', Copy) {
+    from "${projectDir}/build/libs/${project.name}.jar"
+    into "${projectDir}/docker"
+}
+
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+tasks.build.dependsOn(copyFileFromBuildFolder)

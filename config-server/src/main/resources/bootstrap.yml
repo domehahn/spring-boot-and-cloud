@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        bootstrap: true
+        composite:
+          - type: git
+            uri: file:///config-files
+          - type: vault
+            token: root
+            host: host.docker.internal
+            port: 8201
+            kvVersion: 2
+        vault:
+          token: root
+    consul:
+      host: host.docker.internal
+      port: 8500
+      config:
+        format: YAML
+server:
+  port: 1234

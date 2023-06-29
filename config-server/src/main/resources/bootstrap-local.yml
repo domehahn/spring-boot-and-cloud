@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        bootstrap: true
+        composite:
+          - type: git
+            uri: file://${user.home}/dev/playground/spring-boot/spring-boot-02/config-files
+          - type: vault
+            token: root
+            host: localhost
+            port: 8201
+            kvVersion: 2
+        vault:
+          token: root
+    consul:
+      host: localhost
+      port: 8500
+      config:
+        format: YAML
+server:
+  port: 1234

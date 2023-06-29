@@ -1,0 +1,29 @@
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      username: ${mongodb.username}
+      password: ${mongodb.password}
+      database: data_db
+      port: 27017
+      host: localhost
+    redis:
+      host: localhost
+      port: 6379
+      password: ${redis.cache.password}
+  cache:
+    type: redis
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
+  otlp:
+   metrics:
+    export:
+     url: http://localhost:4318/v1/metrics
+     enabled: true

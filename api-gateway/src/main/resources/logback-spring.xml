@@ -26,13 +26,13 @@
                     <omitEmptyFields>true</omitEmptyFields>
                     <pattern>
                         {
-                            "trace": {
-                                "app": "${spring.application.name}",
-                                "host": "${HOSTNAME}",
-                                "traceID": "%X{traceId:-NONE}",
-                                "spanID": "%X{spanId:-NONE}",
-                                "level": "%level"
-                            }
+                        "trace": {
+                        "app": "${appName}",
+                        "host": "${HOSTNAME}",
+                        "traceID": "%mdc{traceId:-NONE}",
+                        "spanID": "%mdc{spanId:-NONE}",
+                        "level": "%level"
+                        }
                         }
                     </pattern>
                 </pattern>
